@@ -43,45 +43,22 @@ void Grid::Draw()
         {
             int cellValue = grid[row][column];
             Color cellColor = colors[cellValue];
-            int sides = 6;
-            int radius = cellSize / 2;
-            int rotation = 90;
+            int radius = (cellSize / 2);
 
             float cellX = (float)cellSize * (float)column;
             float cellY = (float)cellSize * (float)row;
             Vector2 center = {cellX, cellY};
 
-            switch (row)
+            if (row < 5)
             {
-            case 1:
-                center = {cellX - radius * 4, cellY};
-                break;
-            case 2:
-                center = {cellX - radius * 3, cellY};
-                break;
-            case 3:
-                center = {cellX - radius * 2, cellY};
-                break;
-            case 4:
-                center = {cellX - radius, cellY};
-                break;
-            case 6:
-                center = {cellX + radius, cellY};
-                break;
-            case 7:
-                center = {cellX + radius * 2, cellY};
-                break;
-            case 8:
-                center = {cellX + radius * 3, cellY};
-                break;
-            case 9:
-                center = {cellX + radius * 4, cellY};
-                break;
-            default:
-                break;
+                center = {cellX - radius * (5 - row), cellY};
+            }
+            else if (row > 5)
+            {
+                center = {cellX + radius * (row - 5), cellY};
             }
 
-            DrawPoly(center, sides, radius, rotation, cellColor);
+            DrawCircle(center.x, center.y, radius, cellColor);
         }
     }
 }

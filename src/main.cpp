@@ -2,17 +2,17 @@
 #include <raylib.h>
 #include "grid.h"
 
-int main() 
+int main()
 {
     constexpr int screenWidth = 110 * 2.75f;
     constexpr int screenHeight = 110 * 2.75f;
-    
+
     InitWindow(screenWidth, screenHeight, "ABALONE");
     SetTargetFPS(60);
 
     Grid grid = Grid();
 
-// BAS
+    // BAS
     grid.grid[9][1] = 1;
     grid.grid[9][2] = 1;
     grid.grid[9][3] = 1;
@@ -43,7 +43,7 @@ int main()
     grid.grid[6][7] = 4;
     grid.grid[6][8] = 4;
 
-// MID
+    // MID
     grid.grid[5][1] = 4;
     grid.grid[5][2] = 4;
     grid.grid[5][3] = 4;
@@ -54,7 +54,7 @@ int main()
     grid.grid[5][8] = 4;
     grid.grid[5][9] = 4;
 
-// HAUT
+    // HAUT
     grid.grid[1][9] = 2;
     grid.grid[1][8] = 2;
     grid.grid[1][7] = 2;
@@ -92,11 +92,22 @@ int main()
         BeginDrawing();
         ClearBackground(BLACK);
 
-            grid.Draw();
+        grid.Draw();
+
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            Vector2 mousePosition = GetMousePosition();
+
+            std::cout <<  mousePosition.x / 30 << " " << ( mousePosition.y / 30  )  << std::endl;
+
+            std:: cout << ( -(mousePosition.y / 30) + 2 * (mousePosition.x / 30) + 5) / 2 << std::endl;
             
+            grid.grid[8][1] = 4;
+            grid.grid[7][1] = 1;
+        }
 
         EndDrawing();
     }
-    
+
     CloseWindow();
 }
