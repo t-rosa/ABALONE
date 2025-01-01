@@ -5,7 +5,7 @@
 Grid::Grid()
 {
     rowsCount = 11;
-    columnsCount = 19;
+    columnsCount = 11;
     cellSize = 30;
     Initialize();
     colors = GetCellColors();
@@ -42,12 +42,21 @@ void Grid::Draw()
         {
             int cellValue = grid[row][column];
             Color cellColor = colors[cellValue];
-            DrawRectangle(cellSize * column + 1, cellSize * row + 1, cellSize - 1, cellSize - 1, cellColor);
+
+            float cellX = (float)cellSize * (float)column;
+            float cellY = (float)cellSize * (float)row;
+
+            Vector2 center = {cellX, cellY};
+            int sides = 6;
+            int radius = cellSize / 2;
+            int rotation = 90;
+
+            DrawPoly(center, sides, radius, rotation, cellColor);
         }
     }
 }
 
 std::vector<Color> Grid::GetCellColors()
 {
-    return { BLACK, BLUE, RED, GREEN };
+    return {BLACK, BLUE, RED, BLACK, WHITE};
 }

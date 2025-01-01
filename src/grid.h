@@ -10,7 +10,7 @@ public:
     void Initialize();
     void Print();
     void Draw();
-    int grid[19][11];
+    int grid[11][11];
 
 private:
     std::vector<Color> GetCellColors();
