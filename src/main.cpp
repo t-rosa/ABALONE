@@ -1,25 +1,38 @@
+#include <iostream>
 #include <raylib.h>
-#include "ball.h"
+#include "grid.h"
 
 int main() 
 {
-    const Color darkGreen = {20, 160, 133, 255};
+    constexpr int screenWidth = 190 * 3;
+    constexpr int screenHeight = 110 * 3;
     
-    constexpr int screenWidth = 800;
-    constexpr int screenHeight = 600;
-    
-    Ball ball;
-    
-    InitWindow(screenWidth, screenHeight, "My first RAYLIB program!");
+    InitWindow(screenWidth, screenHeight, "ABALONE");
     SetTargetFPS(60);
-    
+
+    // Commencer la partie
+    // Est-ce qu'un des deux joueur à gagné ?
+    // Oui
+    //  => FIN
+    // Non
+    //  => Est-ce que c'est le premier tour ?
+    // Oui
+    //  => Noir joue
+    // Non
+    //  => Si noir a joué blanc joue
+    //      => 
+    //  => Sinon noir joue
+    // 
+
+    Grid grid = Grid();
+
     while (!WindowShouldClose())
     {
-        ball.Update();
-        
         BeginDrawing();
-            ClearBackground(darkGreen);
-            ball.Draw();
+        ClearBackground(WHITE);
+
+            grid.Draw();
+
         EndDrawing();
     }
     
