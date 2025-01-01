@@ -10,20 +10,6 @@ int main()
     InitWindow(screenWidth, screenHeight, "ABALONE");
     SetTargetFPS(60);
 
-    // Commencer la partie
-    // Est-ce qu'un des deux joueur à gagné ?
-    // Oui
-    //  => FIN
-    // Non
-    //  => Est-ce que c'est le premier tour ?
-    // Oui
-    //  => Noir joue
-    // Non
-    //  => Si noir a joué blanc joue
-    //      => 
-    //  => Sinon noir joue
-    // 
-
     Grid grid = Grid();
 
     while (!WindowShouldClose())
