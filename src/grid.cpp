@@ -1,6 +1,7 @@
 #include "grid.h"
 #include "iostream"
 #include "raylib.h"
+#include "string"
 
 Grid::Grid()
 {
@@ -42,14 +43,43 @@ void Grid::Draw()
         {
             int cellValue = grid[row][column];
             Color cellColor = colors[cellValue];
-
-            float cellX = (float)cellSize * (float)column;
-            float cellY = (float)cellSize * (float)row;
-
-            Vector2 center = {cellX, cellY};
             int sides = 6;
             int radius = cellSize / 2;
             int rotation = 90;
+
+            float cellX = (float)cellSize * (float)column;
+            float cellY = (float)cellSize * (float)row;
+            Vector2 center = {cellX, cellY};
+
+            switch (row)
+            {
+            case 1:
+                center = {cellX - radius * 4, cellY};
+                break;
+            case 2:
+                center = {cellX - radius * 3, cellY};
+                break;
+            case 3:
+                center = {cellX - radius * 2, cellY};
+                break;
+            case 4:
+                center = {cellX - radius, cellY};
+                break;
+            case 6:
+                center = {cellX + radius, cellY};
+                break;
+            case 7:
+                center = {cellX + radius * 2, cellY};
+                break;
+            case 8:
+                center = {cellX + radius * 3, cellY};
+                break;
+            case 9:
+                center = {cellX + radius * 4, cellY};
+                break;
+            default:
+                break;
+            }
 
             DrawPoly(center, sides, radius, rotation, cellColor);
         }

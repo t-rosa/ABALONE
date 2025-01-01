@@ -4,8 +4,8 @@
 
 int main() 
 {
-    constexpr int screenWidth = 110 * 3;
-    constexpr int screenHeight = 110 * 3;
+    constexpr int screenWidth = 110 * 2.75f;
+    constexpr int screenHeight = 110 * 2.75f;
     
     InitWindow(screenWidth, screenHeight, "ABALONE");
     SetTargetFPS(60);
@@ -86,7 +86,6 @@ int main()
     grid.grid[4][9] = 4;
 
     grid.Print();
-
 
     while (!WindowShouldClose())
     {
